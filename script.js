@@ -1,8 +1,11 @@
 // script.js – tiny helpers for cursor, scroll reveal, and contact form demo
 
+// ---------- Add data-reveal attribute FIRST, before observer setup ----------
+document.querySelectorAll('section').forEach(sec => sec.setAttribute('data-reveal', ''));
+
 // ---------- Custom cursor ----------
 const cursor = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
+document.addEventListener('mousemove', (e) => {
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
 });
@@ -26,13 +29,9 @@ if (form) {
   form.addEventListener('submit', e => {
     e.preventDefault();
     status.textContent = '📧 Sending…';
-    // Simulate async send; replace with real endpoint if needed
     setTimeout(() => {
       status.textContent = '✅ Message sent! (demo only)';
       form.reset();
     }, 1200);
   });
 }
-
-// Optional: add data-reveal attribute to sections for animation
-document.querySelectorAll('section').forEach(sec => sec.setAttribute('data-reveal', ''));
