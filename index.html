@@ -3,47 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impressive Webpage</title>
+  <title>Yoga Bima Anggara Putra – Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="hero">
-    <h1>Welcome to Your Amazing Site</h1>
-    <p>Crafted with love, code, and a dash of magic.</p>
-    <a href="#about" class="cta">Learn More</a>
-  </header>
+  <!-- custom cursor – optional but lightweight -->
+  <div id="cursor"></div>
 
-  <section id="about" class="section">
-    <h2>About This Site</h2>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <h1 class="name">Yoga Bima Anggara Putra</h1>
+    <p class="tagline">Full‑Stack Software Engineer</p>
+    <a href="#projects" class="cta">View My Work</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <h2>About Me</h2>
     <p>
-      This page showcases modern CSS animations, a responsive layout, and interactive
-      JavaScript effects—all without any frameworks. Feel free to explore and adapt!
+      Hi! I’m <strong>AGOYYY</strong> (aka <em>agoyy</em>). After a five‑month journey learning to code, I’ve delivered my first full‑stack project and now spend my time exploring modern developer tooling and AI‑assisted coding.
     </p>
   </section>
 
-  <section id="gallery" class="section">
-    <h2>Gallery</h2>
-    <div class="grid">
-      <img src="https://picsum.photos/seed/1/300/200" alt="Random image 1" />
-      <img src="https://picsum.photos/seed/2/300/200" alt="Random image 2" />
-      <img src="https://picsum.photos/seed/3/300/200" alt="Random image 3" />
-      <img src="https://picsum.photos/seed/4/300/200" alt="Random image 4" />
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <h2>Tech Stack</h2>
+    <ul class="skill-grid">
+      <li>React</li>
+      <li>Vite</li>
+      <li>JavaScript</li>
+      <li>HTML / CSS</li>
+      <li>Git</li>
+      <li>Vercel</li>
+      <li>Claude Code (AI‑assisted coding)</li>
+    </ul>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>Project One</h3>
+        <p>Brief description – replace with your own content.</p>
+        <a href="#" class="project-link">Details →</a>
+      </div>
+      <div class="project-card">
+        <h3>Project Two</h3>
+        <p>Brief description – replace with your own content.</p>
+        <a href="#" class="project-link">Details →</a>
+      </div>
     </div>
   </section>
 
-  <section id="contact" class="section">
-    <h2>Contact Me</h2>
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
     <form id="contactForm">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
       <button type="submit" class="cta">Send</button>
     </form>
+    <p class="contact-links">
+      <a href="mailto:youremail@example.com">youremail@example.com</a> |
+      <a href="https://github.com/agoyy" target="_blank">GitHub</a> |
+      <a href="https://www.linkedin.com/in/agoyy" target="_blank">LinkedIn</a>
+    </p>
     <p id="status"></p>
   </section>
 
   <footer>
-    <p>&copy; 2026 Your Name. All rights reserved.</p>
+    <p>&copy; 2026 Yoga Bima Anggara Putra. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>

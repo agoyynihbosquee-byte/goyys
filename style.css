@@ -1,134 +1,285 @@
-/* Global reset & typography */
+/* ------------------------------------------------------------
+   Global reset & base styling
+   ------------------------------------------------------------ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
 body {
   font-family: "Segoe UI", Tahoma, sans-serif;
   line-height: 1.6;
-  color: #333;
-  background: #f0f4f8;
+  background: #111;               /* dark base */
+  color: #eee;
 }
 
-/* Hero section */
+a { text-decoration: none; color: inherit; }
+
+/* ------------------------------------------------------------
+   Accent colors – teal + violet blend (both work well on dark)
+   ------------------------------------------------------------ */
+:root {
+  --accent-1: #00b3a4;   /* teal */
+  --accent-2: #8a2be2;   /* violet */
+}
+
+/* ------------------------------------------------------------
+   Custom cursor (tiny circle that follows mouse)
+   ------------------------------------------------------------ */
+#cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-1);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform .08s ease-out, background .3s;
+  z-index: 9999;
+}
+
+/* ------------------------------------------------------------
+   Hero section – full‑screen with gradient background
+   ------------------------------------------------------------ */
 .hero {
-  background: linear-gradient(135deg, #4a90e2, #9013fe);
-  color: #fff;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d0d0d, #111);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 120px 20px;
+  padding: 2rem;
   position: relative;
   overflow: hidden;
 }
 
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 0.5rem;
-  animation: fadeInDown 1s ease-out;
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, var(--accent-1), transparent 60%),
+              radial-gradient(circle at 80% 70%, var(--accent-2), transparent 60%);
+  opacity: 0.2;
+  z-index: -1;
 }
 
-.hero p {
+.name {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--accent-2);
+  margin-bottom: .5rem;
+  animation: fadeInUp .8s ease forwards;
+}
+
+.tagline {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
-  animation: fadeInUp 1s ease-out;
+  opacity: .8;
+  animation: fadeInUp .8s .2s ease forwards;
 }
 
 .cta {
   display: inline-block;
-  background: #ffdd57;
-  color: #222;
-  padding: 0.75rem 1.5rem;
+  background: var(--accent-1);
+  color: #111;
+  padding: .75rem 1.5rem;
   border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.2s, box-shadow 0.2s;
+  font-weight: 600;
+  transition: transform .2s, box-shadow .2s, background .2s;
+  animation: fadeInUp .8s .4s ease forwards;
 }
 
 .cta:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.4);
+  background: var(--accent-2);
 }
 
-/* Sections */
-.section {
-  padding: 60px 20px;
+/* ------------------------------------------------------------
+   Section common styles
+   ------------------------------------------------------------ */
+section {
+  padding: 4rem 1.5rem;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-.section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+section h2 {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  margin-bottom: 1.5rem;
   text-align: center;
-  color: #2c3e50;
+  position: relative;
 }
 
-/* Gallery grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
+section h2::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: var(--accent-1);
+  display: block;
+  margin: .5rem auto 0;
 }
 
-.grid img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  transition: transform 0.3s;
+/* ------------------------------------------------------------
+   About
+   ------------------------------------------------------------ */
+.about p {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.8;
 }
 
-.grid img:hover {
-  transform: scale(1.05);
-}
-
-/* Contact form */
-#contactForm {
+/* ------------------------------------------------------------
+   Skills – simple grid of pills
+   ------------------------------------------------------------ */
+.skills .skill-grid {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .8rem;
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.skills .skill-grid li {
+  background: rgba(255,255,255,.08);
+  padding: .4rem .9rem;
+  border-radius: 20px;
+  font-size: .9rem;
+  color: var(--accent-1);
+  transition: background .3s, color .3s;
+}
+
+.skills .skill-grid li:hover {
+  background: var(--accent-1);
+  color: #111;
+}
+
+/* ------------------------------------------------------------
+   Projects – card layout
+   ------------------------------------------------------------ */
+.projects .project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background: rgba(255,255,255,.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform .3s, box-shadow .3s;
+  border: 1px solid rgba(255,255,255,.07);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.5);
+}
+
+.project-card h3 {
+  margin-bottom: .6rem;
+  color: var(--accent-2);
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: .8rem;
+  color: var(--accent-1);
+  font-weight: 500;
+  transition: opacity .2s;
+}
+
+.project-link:hover { opacity: .7; }
+
+/* ------------------------------------------------------------
+   Contact – simple form
+   ------------------------------------------------------------ */
+.contact form {
   max-width: 500px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
 }
 
-#contactForm input,
-#contactForm textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
+.contact input,
+.contact textarea {
+  padding: .8rem 1rem;
+  border: 1px solid #444;
   border-radius: 6px;
-  font-size: 1rem;
+  background: #222;
+  color: #eee;
+  font-size: .95rem;
 }
 
-#contactForm button {
+.contact button {
   align-self: flex-start;
-  background: #4a90e2;
-  color: #fff;
+  background: var(--accent-2);
+  color: #111;
   border: none;
-  padding: 12px 24px;
+  padding: .7rem 1.4rem;
   border-radius: 30px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background .2s, transform .2s;
 }
 
-#contactForm button:hover {
-  background: #357abd;
+.contact button:hover {
+  background: var(--accent-1);
+  transform: translateY(-2px);
 }
 
-footer {
-  background: #2c3e50;
-  color: #fff;
+.contact-links {
+  margin-top: 1.5rem;
   text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
+  font-size: .9rem;
 }
 
-/* Animations */
-@keyframes fadeInDown {
-  from {opacity:0; transform: translateY(-20px);}
-  to {opacity:1; transform: translateY(0);}
+.contact-links a {
+  color: var(--accent-1);
+  margin: 0 .4rem;
 }
+
+/* ------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------ */
+footer {
+  background: #0a0a0a;
+  text-align: center;
+  padding: 1rem;
+  font-size: .85rem;
+  color: #777;
+}
+
+/* ------------------------------------------------------------
+   Animations – fade/slide on scroll (via JS IntersectionObserver)
+   ------------------------------------------------------------ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+[data-reveal].visible { opacity: 1; transform: none; }
+
 @keyframes fadeInUp {
-  from {opacity:0; transform: translateY(20px);}
-  to {opacity:1; transform: translateY(0);}
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+/* ------------------------------------------------------------
+   Responsive tweaks
+   ------------------------------------------------------------ */
+@media (max-width: 600px) {
+  .hero .name { font-size: 2rem; }
+  .hero .tagline { font-size: 1rem; }
 }
