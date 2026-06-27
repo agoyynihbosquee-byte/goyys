@@ -1,81 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yoga Bima Anggara Putra – Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AGOYYY — Full-Stack Software Engineer</title>
+<meta name="description" content="Yoga Bima Anggara Putra (AGOYYY) — Full-Stack Software Engineer. Interactive particle-art portfolio." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- custom cursor – optional but lightweight -->
-  <div id="cursor"></div>
+  <!-- Global particle canvas (fixed background for the whole page) -->
+  <canvas id="scene"></canvas>
+  <div class="grid-floor"></div>
 
-  <!-- HERO -->
-  <section class="hero" id="hero">
-    <h1 class="name">Yoga Bima Anggara Putra</h1>
-    <p class="tagline">Full‑Stack Software Engineer</p>
-    <a href="#projects" class="cta">View My Work</a>
-  </section>
+  <!-- Floating techy HUD -->
+  <div class="hud">
+    <span class="hud-dot"></span>
+    <span id="clock">--:--:--</span>
+    <span class="hud-sep">/</span>
+    <span id="count">0 NODES</span>
+  </div>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <h2>About Me</h2>
-    <p>
-      Hi! I’m <strong>AGOYYY</strong> (aka <em>agoyy</em>). After a five‑month journey learning to code, I’ve delivered my first full‑stack project and now spend my time exploring modern developer tooling and AI‑assisted coding.
-    </p>
-  </section>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <a href="#hero" class="nav-logo">AG<span>•</span></a>
+    <nav class="nav-links">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </header>
 
-  <!-- SKILLS -->
-  <section class="skills" id="skills">
-    <h2>Tech Stack</h2>
-    <ul class="skill-grid">
-      <li>React</li>
-      <li>Vite</li>
-      <li>JavaScript</li>
-      <li>HTML / CSS</li>
-      <li>Git</li>
-      <li>Vercel</li>
-      <li>Claude Code (AI‑assisted coding)</li>
-    </ul>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="projects" id="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>Project One</h3>
-        <p>Brief description – replace with your own content.</p>
-        <a href="#" class="project-link">Details →</a>
+  <main>
+    <!-- HERO -->
+    <section id="hero" class="section hero">
+      <div class="hero-inner reveal">
+        <p class="eyebrow">FULL-STACK · ENGINEER · INDONESIA</p>
+        <h1 class="title">YOGA BIMA<br />ANGGARA PUTRA</h1>
+        <p class="subtitle">Full-Stack Software Engineer — building things with code,
+          chasing clean UI &amp; smooth motion. Known as <b>AGOYYY</b>.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-pink">VIEW PROJECTS ↓</a>
+          <a href="#contact" class="btn btn-cyan">GET IN TOUCH</a>
+        </div>
       </div>
-      <div class="project-card">
-        <h3>Project Two</h3>
-        <p>Brief description – replace with your own content.</p>
-        <a href="#" class="project-link">Details →</a>
+      <a href="#about" class="scroll-cue" aria-label="scroll down">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section about">
+      <div class="wrap reveal">
+        <p class="kicker pink">01 — ABOUT</p>
+        <h2 class="h2">Five months in, fully hooked.</h2>
+        <div class="about-grid">
+          <p>
+            I'm <b>Yoga Bima Anggara Putra</b> — a self-driven Full-Stack Software
+            Engineer from Indonesia. I started my coding journey about
+            <b class="glow-cyan">5 months ago</b> and shipped my first real project soon after.
+          </p>
+          <p>
+            Right now I'm deep into <b class="glow-pink">developer tooling</b> and
+            <b class="glow-green">AI-assisted coding</b> — exploring how modern workflows,
+            agents, and great DX can make building software faster and a lot more fun.
+            I care about performance, crisp interfaces, and details that feel alive.
+          </p>
+        </div>
+        <div class="stats">
+          <div class="stat"><span class="stat-num glow-cyan">5</span><span class="stat-lbl">MONTHS CODING</span></div>
+          <div class="stat"><span class="stat-num glow-pink">1</span><span class="stat-lbl">PROJECT SHIPPED</span></div>
+          <div class="stat"><span class="stat-num glow-green">∞</span><span class="stat-lbl">CURIOSITY</span></div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <h2>Contact</h2>
-    <form id="contactForm">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-      <button type="submit" class="cta">Send</button>
-    </form>
-    <p class="contact-links">
-      <a href="mailto:youremail@example.com">youremail@example.com</a> |
-      <a href="https://github.com/agoyy" target="_blank">GitHub</a> |
-      <a href="https://www.linkedin.com/in/agoyy" target="_blank">LinkedIn</a>
-    </p>
-    <p id="status"></p>
-  </section>
+    <!-- SKILLS -->
+    <section id="skills" class="section skills">
+      <div class="wrap reveal">
+        <p class="kicker green">02 — STACK</p>
+        <h2 class="h2">Tools I build with.</h2>
+        <div class="pills" id="pills">
+          <span class="pill" data-c="cyan">React</span>
+          <span class="pill" data-c="pink">Vite</span>
+          <span class="pill" data-c="green">JavaScript</span>
+          <span class="pill" data-c="cyan">HTML5</span>
+          <span class="pill" data-c="pink">CSS3</span>
+          <span class="pill" data-c="green">Canvas API</span>
+          <span class="pill" data-c="cyan">Git</span>
+          <span class="pill" data-c="pink">Vercel</span>
+          <span class="pill" data-c="green">AI Coding Tools</span>
+          <span class="pill" data-c="cyan">Node.js</span>
+        </div>
+      </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2026 Yoga Bima Anggara Putra. All rights reserved.</p>
-  </footer>
+    <!-- PROJECTS -->
+    <section id="projects" class="section projects">
+      <div class="wrap reveal">
+        <p class="kicker pink">03 — WORK</p>
+        <h2 class="h2">Selected projects.</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="card-tag">PARTICLE ART · CANVAS</div>
+            <h3 class="card-title glow-pink">NEONFLUX</h3>
+            <p class="card-desc">
+              An interactive particle-art experience built with pure HTML5 Canvas +
+              vanilla JS. Hundreds of mouse-reactive particles flock, swirl, and
+              detonate into neon shockwaves — the same engine powering this site.
+            </p>
+            <div class="card-stack">
+              <span>Canvas</span><span>Vanilla JS</span><span>RAF</span>
+            </div>
+            <div class="card-links">
+              <a href="#contact" class="card-link cyan">Live ↗</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-tag">PORTFOLIO · WEB</div>
+            <h3 class="card-title glow-cyan">THIS SITE</h3>
+            <p class="card-desc">
+              A from-scratch portfolio with a full-screen particle background,
+              neon gradient typography, and a real-time HUD — no frameworks,
+              no heavy libraries, just clean HTML/CSS/JS.
+            </p>
+            <div class="card-stack">
+              <span>HTML</span><span>CSS</span><span>JS</span>
+            </div>
+            <div class="card-links">
+              <a href="#hero" class="card-link pink">Top ↑</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="wrap reveal">
+        <p class="kicker cyan">04 — CONTACT</p>
+        <h2 class="h2">Let's build something.</h2>
+        <p class="contact-sub">Open to collaboration, freelance work, and learning opportunities.</p>
+
+        <form id="contact-form" class="form" novalidate>
+          <div class="field">
+            <input type="text" id="name" name="name" placeholder=" " required />
+            <label for="name">Your name</label>
+          </div>
+          <div class="field">
+            <input type="email" id="email" name="email" placeholder=" " required />
+            <label for="email">Your email</label>
+          </div>
+          <div class="field">
+            <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+            <label for="message">Message</label>
+          </div>
+          <button type="submit" class="btn btn-pink full">SEND MESSAGE →</button>
+          <p class="form-note" id="form-note" aria-live="polite"></p>
+        </form>
+
+        <div class="socials">
+          <a href="https://github.com/agoyy" target="_blank" rel="noopener" class="social">GitHub ↗</a>
+          <a href="mailto:agoyy@example.com" class="social">Email ↗</a>
+        </div>
+      </div>
+      <footer class="footer">
+        <span>© <span id="year"></span> Yoga Bima Anggara Putra · AGOYYY</span>
+        <span>Built with HTML · CSS · vanilla JS</span>
+      </footer>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
